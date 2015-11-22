@@ -11,6 +11,7 @@ def getResult(query):
     page = url.read()
     soup = bs4.BeautifulSoup(page)
     raw = soup.get_text(page)
+    text = []
     if("who" in query):
         """
         finds all text with capitals for 2 consecutive words
@@ -25,13 +26,14 @@ def getResult(query):
         """
         not sure how to do when yet
         """
-        text = re.findall(" ");
+        text = re.findall(" +",raw)
+
     dictionary = {}
     for result in text:
         """
         if the result has been found before, add 1 to number of occurence
         """
-        if name in dictionary.keys():
+        if result in dictionary.keys():
             dictionary[result] += 1
         """
         if the result hasn't been found before, set the occurence equal to one
