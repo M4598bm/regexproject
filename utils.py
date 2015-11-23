@@ -61,7 +61,10 @@ def makedict(list):
         for key in dictionary.keys():
             print "%s:%d" % (key,dictionary[key])
     return dictionary
-
+    
+"""
+finds the item that occurs the most in the dictionary
+"""
 def findResult(dictionary):
     result = dictionary.keys()[0]
     for key in dictionary.keys():
