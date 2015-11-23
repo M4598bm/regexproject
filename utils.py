@@ -37,7 +37,7 @@ def getResult(query):
         day = makedict(text2)
         year = makedict(text3)
         return findResult(month) + "," +  findResult(day) + "," + findResult(year)
-        
+
 """
 makes a dictionary for all the search results
 """
@@ -54,14 +54,14 @@ def makedict(list):
             """
         else:
             dictionary[item] = 1
-        
+
         """
         testing purposes
         """
         for key in dictionary.keys():
             print "%s:%d" % (key,dictionary[key])
     return dictionary
-    
+
 """
 finds the item that occurs the most in the dictionary
 """
