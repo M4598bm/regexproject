@@ -68,7 +68,7 @@ finds the item that occurs the most in the dictionary
 def findResult(dictionary):
     result = dictionary.keys()[0]
     for key in dictionary.keys():
-        if(key.get() > result.get()):
+        if(dictionary[key] > dictionary[result]):
             result = key
     return result
 
