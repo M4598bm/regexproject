@@ -77,5 +77,5 @@ def findResult(dictionary):
             result = key
     print result
 
-getResult("who is Barack Obama")
+getResult("where is obama")
 #print findResult({"a":1,"b":2,"c":3})
