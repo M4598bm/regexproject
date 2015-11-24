@@ -32,7 +32,7 @@ def getResult(query):
         """
         text = re.findall("[A-z][a-z]+",raw)
         text2 = re.findall("[0-3]?[[0-9]",raw)
-        text3 = re.findall("[0-2]?[0-9]{3}",raw)
+        text3 = re.findall("[0-2][0-9]{3}",raw)
         month = makedict(text)
         day = makedict(text2)
         year = makedict(text3)
