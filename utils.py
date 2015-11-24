@@ -8,7 +8,7 @@ def getResult(query):
         plist.append(r)
 
     url = urllib2.urlopen(plist[0])
-    page = url.read()
+    page = url.read().decode('utf-8')
     soup = bs4.BeautifulSoup(page)
     raw = soup.get_text(page)
     text = []
@@ -26,7 +26,7 @@ def getResult(query):
         text = re.findall("[A-Z][a-z]+",raw)
         place = makedict(text)
         return findResult(place)
-    else:
+    elif("when" in query):
         """
         makes 3 dictionaries for month,day,year
         """
@@ -37,10 +37,14 @@ def getResult(query):
         day = makedict(text2)
         year = makedict(text3)
         return findResult(month) + "," +  findResult(day) + "," + findResult(year)
-
+    else:
+        return "Ask an appropriate question please"
+        
+        
 """
 makes a dictionary for all the search results
 """
+
 def makedict(list):
     dictionary = {}
     for item in list:
@@ -55,11 +59,11 @@ def makedict(list):
         else:
             dictionary[item] = 1
 
-        """
-        testing purposes
-        """
-        for key in dictionary.keys():
-            print "%s:%d" % (key,dictionary[key])
+    """
+    testing purposes
+    """
+    for key in dictionary.keys():
+        print "%s:%d" % (key,dictionary[key])
     return dictionary
 
 """
@@ -72,5 +76,6 @@ def findResult(dictionary):
             result = key
     return result
 
-#getResult("Penguin")
-print findResult({"a":1,"b":2,"c":3})
+temp = makedict([1,2,3,4,5,1,1,1,1,1,1,])
+print temp
+print findResult(temp)
