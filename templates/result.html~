@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>'{{q}}'</title>
+  </head>
+
+  <body>
+    <h3>Result for {{q}}:</h3><br>
+    <h2>{{result}}</h2>
+  </body>
+</html>

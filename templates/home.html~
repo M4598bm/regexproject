@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>Search</title>
+  </head>
+  
+  <body>
+    <form method="POST">
+      Search: 
+      <input on type="submit" name="Search">
+    </form>
+  </body>
+</html>
