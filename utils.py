@@ -1,6 +1,10 @@
 import google, urllib2, bs4, re
 
 def getResult(query):
+    low = query.lower()
+    if("when" not in low and "who" not in low and "when" not in low): 
+        return "Ask an appropriate question please"
+        
     pages = google.search(query,num=10,start=0,stop=10)
 
     plist = []
@@ -8,18 +12,18 @@ def getResult(query):
         plist.append(r)
 
     url = urllib2.urlopen(plist[0])
-    page = url.read()
+    page = url.read().decode('utf-8')
     soup = bs4.BeautifulSoup(page)
     raw = soup.get_text(page)
     text = []
-    if("who" in query):
+    if("who" in low):
         """
         finds all text with capitals for 2 consecutive words
         """
         text = re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw)
         person = makedict(text)
         return findResult(person)
-    elif("where" in query):
+    elif("where" in low):
         """
         finds all text with one capital
         """
@@ -37,10 +41,11 @@ def getResult(query):
         day = makedict(text2)
         year = makedict(text3)
         return findResult(month) + "," +  findResult(day) + "," + findResult(year)
-
+        
 """
 makes a dictionary for all the search results
 """
+
 def makedict(list):
     dictionary = {}
     for item in list:
@@ -55,11 +60,11 @@ def makedict(list):
         else:
             dictionary[item] = 1
 
-        """
-        testing purposes
-        """
-        for key in dictionary.keys():
-            print "%s:%d" % (key,dictionary[key])
+    """
+    testing purposes
+    """
+    for key in dictionary.keys():
+        print "%s:%d" % (key,dictionary[key])
     return dictionary
 
 """
@@ -72,5 +77,7 @@ def findResult(dictionary):
             result = key
     return result
 
-#getResult("Penguin")
-print findResult({"a":1,"b":2,"c":3})
+temp = makedict([1,2,3,4,5,1,1,1,1,1,1,])
+print temp
+print findResult(temp)
+print getResult("Que Pasa?")
