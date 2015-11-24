@@ -2,7 +2,7 @@ import google, urllib2, bs4, re
 
 def getResult(query):
     low = query.lower()
-    if("when" not in low and "who" not in low and "when" not in low): 
+    if("where" not in low and "who" not in low and "when" not in low): 
         return "Ask an appropriate question please"
         
     pages = google.search(query,num=10,start=0,stop=10)
