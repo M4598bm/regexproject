@@ -16,14 +16,14 @@ def getResult(query):
     soup = bs4.BeautifulSoup(page)
     raw = soup.get_text(page)
     text = []
-    if("who" in query.lower()):
+    if("who" in low):
         """
         finds all text with capitals for 2 consecutive words
         """
         text = re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw)
         person = makedict(text)
         return findResult(person)
-    elif("where" in query.lower()):
+    elif("where" in low):
         """
         finds all text with one capital
         """
