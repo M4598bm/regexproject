@@ -11,8 +11,3 @@ def home():
 @app.route("/result")
 def result(method="POST"):
     return render_template("result.html", q=request.form["input"], result=getResult(q))
-
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
