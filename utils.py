@@ -8,40 +8,51 @@ def getResult(query):
     pages = google.search(query,num=10,start=0,stop=10)
 
     plist = []
+    text = []
+    """
+    These two lists below are only used for dates
+    """
+    text2 = []
+    text3 =[]
+    
     for r in pages:
         plist.append(r)
 
-    url = urllib2.urlopen(plist[0])
-    page = url.read().decode('utf-8')
-    soup = bs4.BeautifulSoup(page)
-    raw = soup.get_text(page)
-    text = []
-    if("who" in low):
-        """
-        finds all text with capitals for 2 consecutive words
-        """
-        text = re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw)
-        person = makedict(text)
-        return findResult(person)
-    elif("where" in low):
-        """
-        finds all text with one capital
-        """
-        text = re.findall("[A-Z][a-z]+",raw)
-        place = makedict(text)
-        return findResult(place)
+    i = 0
+    while i < 10:
+        url = urllib2.urlopen(plist[i])
+        page = url.read().decode('utf-8')
+        soup = bs4.BeautifulSoup(page,"html.parser")
+        raw = soup.get_text(page)
+        if("who" in low):
+            """
+            finds all text with capitals for 2 consecutive words
+            """
+            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:250])
+            
+        elif("where" in low):
+            """
+            finds all text with one capital
+            """
+            text += re.findall("[A-Z][a-z]+",raw[100:250])
+            
+        else:
+            """
+            makes 3 dictionaries for month,day,year
+            """
+            text += re.findall("[JFMASOND][a-z]+",raw[100:300])
+            text2 += re.findall("[0-3]?[[0-9]",raw[100:300])
+            text3 += re.findall("[0-2][0-9]{3}",raw[100:300])
+        i += 1
+    if("when" not in low):
+        dictionary = makedict(text)
+        return findResult(dictionary)
     else:
-        """
-        makes 3 dictionaries for month,day,year
-        """
-        text = re.findall("[A-z][a-z]+",raw)
-        text2 = re.findall("[0-3]?[[0-9]",raw)
-        text3 = re.findall("[0-2][0-9]{3}",raw)
         month = makedict(text)
         day = makedict(text2)
         year = makedict(text3)
         return findResult(month) + "," +  findResult(day) + "," + findResult(year)
-        
+    
 """
 makes a dictionary for all the search results
 """
@@ -63,21 +74,20 @@ def makedict(list):
     """
     testing purposes
     """
-    for key in dictionary.keys():
-        print "%s:%d" % (key,dictionary[key])
+    #for key in dictionary.keys():
+        #print "%s:%d" % (key,dictionary[key])
     return dictionary
 
 """
 finds the item that occurs the most in the dictionary
 """
 def findResult(dictionary):
+    if dictionary == {}:
+        return " "
     result = dictionary.keys()[0]
     for key in dictionary.keys():
         if(dictionary[key] > dictionary[result]):
             result = key
     return result
 
-temp = makedict([1,2,3,4,5,1,1,1,1,1,1,])
-print temp
-print findResult(temp)
-print getResult("Que Pasa?")
+print getResult("When is Christmas")
