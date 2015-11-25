@@ -9,8 +9,8 @@
     <hr>
     <form method="POST">
       Make another search:<br>
-      <input type="text" name="input" placeholder="Ask for who, what, or where"><br>
-      <button type="submit" name="Search">
+      <input type="text" name="input" placeholder="Ask for who, what, or when"><br>
+      <input type="submit" name="Search">
     </form>
   </body>
 </html>
