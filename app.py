@@ -8,6 +8,12 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-@app.route("/result")
-def result(method="POST"):
-    return render_template("result.html", q=request.form["input"], result=getResult(q))
+@app.route("/result", methods = ["POST"])
+def result():
+    question = request.form["input"]
+    return render_template("result.html", q = question, result = utils.getResult(question))
+
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host = '0.0.0.0', port=8000)
