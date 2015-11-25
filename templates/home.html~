@@ -4,9 +4,10 @@
   </head>
   
   <body>
-    <form method="POST">
+    <form method="POST" action="/result">
       Search: 
-      <input on type="submit" name="Search">
+      <input type="text" name="input" placeholder="Ask for who, what, or where"><br>
+      <input type="submit" name="Search">
     </form>
   </body>
 </html>
