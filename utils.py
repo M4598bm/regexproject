@@ -40,7 +40,7 @@ def getResult(query):
             """
             makes 3 dictionaries for month,day,year
             """
-            text += re.findall("[JFMASOND][a-z]+",raw[100:300])
+            text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:300])
             text2 += re.findall("[0-3]?[[0-9]",raw[100:300])
             text3 += re.findall("[0-2][0-9]{3}",raw[100:300])
         i += 1
