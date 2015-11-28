@@ -26,7 +26,10 @@ def getResult(query):
             soup = bs4.BeautifulSoup(page,"html.parser")
             raw = soup.get_text(page)
         except:
-            pass
+            """
+            when the webpage is inaccesible, return nothing
+            """
+            raw = ""
         if("who" in low):
             """
             finds all text with capitals for 2 consecutive words
