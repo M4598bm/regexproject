@@ -20,10 +20,13 @@ def getResult(query):
 
     i = 0
     while i < 5:
-        url = urllib2.urlopen(plist[i])
-        page = url.read().decode('utf-8')
-        soup = bs4.BeautifulSoup(page,"html.parser")
-        raw = soup.get_text(page)
+        try:
+            url = urllib2.urlopen(plist[i])
+            page = url.read().decode('utf-8')
+            soup = bs4.BeautifulSoup(page,"html.parser")
+            raw = soup.get_text(page)
+        except:
+            pass
         if("who" in low):
             """
             finds all text with capitals for 2 consecutive words
@@ -46,12 +49,16 @@ def getResult(query):
         i += 1
     if("when" not in low):
         dictionary = makedict(text)
-        return findResult(dictionary)
+        if(dictionary != {}):
+            return findResult(dictionary)
+        else:
+            return "No results found"
     else:
-        month = makedict(text)
-        day = makedict(text2)
-        year = makedict(text3)
-        return findResult(month) + "," +  findResult(day) + "," + findResult(year)
+        month = findResult(makedict(text))
+        day = findResult(makedict(text2))
+        year = findResult(makedict(text3))
+        
+        return month + "," + day + "," + year
     
 """
 makes a dictionary for all the search results
@@ -90,6 +97,6 @@ def findResult(dictionary):
             result = key
     return result
 
-#print getResult("When is New Year's Eve?")
-#print getResult("Who played Spiderman?")
-print getResult("Where is the Eiffel Tower?")
+print getResult("When is New Year's Eve?")
+print getResult("Who played Spiderman?")
+print getResult("Where is the Taj Mahal?")
