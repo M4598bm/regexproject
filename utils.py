@@ -34,7 +34,7 @@ def getResult(query):
             """
             finds all text with one capital
             """
-            text += re.findall("[A-Z][a-z]+,[ ]?([A-Z][a-z]+)?",raw[100:2000])
+            text += re.findall("[A-Z][a-z]+,[ ]?[A-Z][a-z]+",raw[100:1000])
             
         else:
             """
@@ -92,4 +92,4 @@ def findResult(dictionary):
 
 #print getResult("When is New Year's Eve?")
 #print getResult("Who played Spiderman?")
-print getResult("Where are the Great Walls?")
+print getResult("Where is the Eiffel Tower?")
