@@ -19,7 +19,7 @@ def getResult(query):
         plist.append(r)
 
     i = 0
-    while i < 10:
+    while i < 5:
         url = urllib2.urlopen(plist[i])
         page = url.read().decode('utf-8')
         soup = bs4.BeautifulSoup(page,"html.parser")
@@ -28,21 +28,21 @@ def getResult(query):
             """
             finds all text with capitals for 2 consecutive words
             """
-            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:250])
+            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:600])
             
         elif("where" in low):
             """
             finds all text with one capital
             """
-            text += re.findall("[A-Z][a-z]+",raw[100:250])
+            text += re.findall("[A-Z][a-z]+",raw[100:600])
             
         else:
             """
             makes 3 dictionaries for month,day,year
             """
-            text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:300])
-            text2 += re.findall("[0-3]?[[0-9]",raw[100:300])
-            text3 += re.findall("[0-2][0-9]{3}",raw[100:300])
+            text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:2000])
+            text2 += re.findall("[0-3]?[0-9]",raw[100:2000])
+            text3 += re.findall("[0-2][0-9]{3}",raw[100:2000])
         i += 1
     if("when" not in low):
         dictionary = makedict(text)
@@ -90,4 +90,4 @@ def findResult(dictionary):
             result = key
     return result
 
-print getResult("When is Christmas")
+print getResult("When is April Fools?")
