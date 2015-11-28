@@ -28,21 +28,21 @@ def getResult(query):
             """
             finds all text with capitals for 2 consecutive words
             """
-            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:600])
+            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:500])
             
         elif("where" in low):
             """
             finds all text with one capital
             """
-            text += re.findall("[A-Z][a-z]+",raw[100:600])
+            text += re.findall("[A-Z][a-z]+,[ ]?[A-Z][a-z]+",raw[100:2000])
             
         else:
             """
             makes 3 dictionaries for month,day,year
             """
-            text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:2000])
-            text2 += re.findall("[0-3]?[0-9]",raw[100:2000])
-            text3 += re.findall("[0-2][0-9]{3}",raw[100:2000])
+            text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:1000])
+            text2 += re.findall("[0-3]?[0-9]",raw[100:1000])
+            text3 += re.findall("[0-2][0-9]{3}",raw[100:1000])
         i += 1
     if("when" not in low):
         dictionary = makedict(text)
@@ -91,3 +91,5 @@ def findResult(dictionary):
     return result
 
 print getResult("When is April Fools?")
+#print getResult("Who played Spiderman?")
+print getResult("Where are the Pyramids?")
