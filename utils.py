@@ -34,7 +34,7 @@ def getResult(query):
             """
             finds all text with capitals for 2 consecutive words
             """
-            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:500])
+            text += re.findall("[A-Z][a-z]+ ([A-Z]. )?[A-Z][a-z]+",raw[100:500])
             
         elif("where" in low):
             """
@@ -100,6 +100,3 @@ def findResult(dictionary):
             result = key
     return result
 
-print getResult("When is New Year's Eve?")
-print getResult("Who played Spiderman?")
-print getResult("Where is the Taj Mahal?")
