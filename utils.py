@@ -6,9 +6,9 @@ def getResult(query):
         return "Ask an appropriate question please"
     
     """
-        
+    Finds the first 10 results
     """
-    pages = google.search(query,num=10,start=0,stop=5)
+    pages = google.search(query,num=10,start=0,stop=10)
 
     plist = []
     text = []
@@ -22,7 +22,7 @@ def getResult(query):
         plist.append(r)
 
     i = 0
-    while i < 5:
+    while i < 10:
         try:
             url = urllib2.urlopen(plist[i])
             page = url.read().decode('utf-8')
