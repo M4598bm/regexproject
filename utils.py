@@ -50,6 +50,9 @@ def getResult(query):
             text2 += re.findall("[0-3]?[0-9]",raw[100:1000])
             text3 += re.findall("[0-2][0-9]{3}",raw[100:1000])
         else:
+            """
+            Does not take any other type of questions
+            """
             break
         i += 1
     if("when" not in low):
