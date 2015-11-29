@@ -65,7 +65,7 @@ def getResult(query):
         day = findResult(makedict(text2))
         year = findResult(makedict(text3))
         
-        return month + "," + day + "," + year
+        return month + ", " + day + ", " + year
     
 """
 makes a dictionary for all the search results
