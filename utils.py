@@ -4,8 +4,11 @@ def getResult(query):
     low = query.lower()
     if("where" not in low and "who" not in low and "when" not in low): 
         return "Ask an appropriate question please"
+    
+    """
         
-    pages = google.search(query,num=10,start=0,stop=10)
+    """
+    pages = google.search(query,num=10,start=0,stop=5)
 
     plist = []
     text = []
@@ -42,18 +45,14 @@ def getResult(query):
             """
             text += re.findall("[A-Z][a-z]+,[ ]?[A-Z][a-z]+",raw[100:1000])
             
-        elif("when" in low):
+        else:
             """
             makes 3 dictionaries for month,day,year
             """
             text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:1000])
             text2 += re.findall("[0-3]?[0-9]",raw[100:1000])
             text3 += re.findall("[0-2][0-9]{3}",raw[100:1000])
-        else:
-            """
-            Does not take any other type of questions
-            """
-            break
+            
         i += 1
     if("when" not in low):
         dictionary = makedict(text)
