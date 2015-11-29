@@ -32,9 +32,9 @@ def getResult(query):
             raw = ""
         if("who" in low):
             """
-            finds all text with capitals for 2 consecutive words with/without a capital + period
+            finds all text with capitals for 2 consecutive words
             """
-            text += re.findall("[A-Z][a-z]+ ([A-Z]. )?[A-Z][a-z]+",raw[100:500])
+            text += re.findall("[A-Z][a-z]+ [A-Z][a-z]+",raw[100:500])
             
         elif("where" in low):
             """
