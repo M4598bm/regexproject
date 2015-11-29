@@ -50,7 +50,7 @@ def getResult(query):
             makes 3 dictionaries for month,day,year
             """
             text += re.findall("January|February|March|April|May|June|July|August|September|October|November|December",raw[100:1000])
-            text2 += re.findall("[0-3]?[0-9]",raw[100:1000])
+            text2 += re.findall("[0-3]?[0-9]{1}",raw[100:1000])
             text3 += re.findall("[0-2][0-9]{3}",raw[100:1000])
             
         i += 1
