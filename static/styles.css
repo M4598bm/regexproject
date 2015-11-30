@@ -1,0 +1,60 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    background-color: #8C4646;
+    overflow: hidden;
+}
+
+
+.description{
+    position: relative;
+    height: 50%;
+}
+
+.formholder{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background-color: #F2AE72;
+    border-radius: 10px;
+    padding: 2.5%;
+}
+
+.answerholder{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding-left: 2.5%;
+}
+
+.answer{
+    background-color: #F2AE72;
+    border-radius: 10px;
+    padding-left: 2.5%;
+}
+
+.backbutton{
+    top: 50%;
+}
+
+/*#wordinput{
+    margin-top: 5%;
+    width: 50%;
+}*/
+
+.forminputs{
+    margin: 10%;
+}
