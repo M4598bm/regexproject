@@ -1,4 +1,4 @@
-# Ghetto Google
+# Worse Google
 
 Description
 -----------
